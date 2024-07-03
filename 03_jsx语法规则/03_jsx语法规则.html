@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03_jsx语法规则</title>
+
+    <style>
+        .title {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="test">
+    <script src="../js/react.development.js" type="text/javascript"></script>
+    <script src="../js/react-dom.development.js" type="text/javascript"></script>
+    <script src="../js/babel.min.js" type="text/javascript"></script>
+
+    <script type="text/babel">
+        const myId = 'aTgUiGu';
+        const myData = 'HellO ReacT';
+
+        // 虚拟DOM只有一个根标签
+        const VDOM =
+            <div>
+                <h1 className="title" id={myId.toLowerCase()}><span>03_jsx语法规则. <span
+                    style={{color: 'green', fontSize: '30px'}}>{myData.toUpperCase()}</span></span></h1>
+                input: <label>
+                <input type="text" value="123"/>
+            </label>
+            </div>//创建虚拟DOM
+        ReactDOM.render(VDOM, document.getElementById('test'));
+    </script>
+</div>
+</body>
+</html>

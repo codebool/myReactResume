@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08_ref回调次数</title>
+</head>
+<body>
+<div id="test">
+    <script src="../js/react.development.js" type="text/javascript"></script>
+    <script src="../js/react-dom.development.js" type="text/javascript"></script>
+    <script src="../js/babel.min.js" type="text/javascript"></script>
+
+    <script type="text/babel">
+        class Demo extends React.Component {
+            state = {
+                isHot: true
+            }
+
+            showData = () => {
+                const {input} = this;
+                alert(input.value);
+            }
+
+            changeWeather = () => {
+                this.setState({
+                    isHot: !this.state.isHot
+                });
+            }
+
+            render() {
+                const {isHot} = this.state;
+                return (
+                    <div>
+                        <h2>{isHot ? "hot":"cool"}</h2>
+                        <input type="text" ref={(currentNode) => {this.input = currentNode; console.log("@", currentNode)}}/>
+                        <button onClick={this.showData}>display text</button>
+                        <button onClick={this.changeWeather}>change Weather</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Demo/>, document.getElementById('test'));
+    </script>
+</div>
+</body>
+</html>
